@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: 2121f3002465@ds.study.iitm.ac.in
+    - name: 21f3002465@ds.study.iitm.ac.in
       run: echo "Hello, world!"
