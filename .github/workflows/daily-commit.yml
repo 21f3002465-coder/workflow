@@ -14,7 +14,7 @@ jobs:
 
       - name: Make a trivial change for commit (21f3002465@ds.study.iitm.ac.in)
         run: |
-          echo "Daily update at $(date)" >> daily_update.txt
+          echo "Daily update at $(date)" > daily_update.txt
 
       - name: Configure Git
         run: |
