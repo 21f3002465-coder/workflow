@@ -1,10 +1,9 @@
 name: Daily Commit Workflow
 
-# Run once per day at a specific time (03:15 UTC)
 on:
   schedule:
-    - cron: '15 3 * * *' # Adjust time as needed
-  workflow_dispatch: # Optional: allows manual triggering
+    - cron: '15 3 * * *'  # Daily at 03:15 UTC
+  workflow_dispatch:
 
 jobs:
   daily-commit:
@@ -15,15 +14,15 @@ jobs:
 
       - name: Make a trivial change for commit (21f3002465@ds.study.iitm.ac.in)
         run: |
-          echo "Daily update $(date)" >> daily_update.txt
+          echo "Daily update at $(date)" >> daily_update.txt
 
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Commit and push changes
+      - name: Force commit and push
         run: |
           git add daily_update.txt
-          git commit -m "Daily commit from GitHub Actions [skip ci]" || echo "No changes to commit"
+          git commit -m "Daily commit from GitHub Actions $(date)" || git commit --allow-empty -m "Daily commit from GitHub Actions $(date)"
           git push
